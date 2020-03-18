@@ -22,7 +22,7 @@ blocks:
             - checkout
             - cache restore
             - npm run build --prefix-path
-            - cache store website-build public
+            - cache store website-build docs
 promotions:
   - name: S3 Production deploy
     pipeline_file: production-deploy-s3.yml
@@ -36,3 +36,5 @@ promotions:
       - result: passed
         branch:
           - master
+  - name: GitHub Pages
+    pipeline_file: pipeline_6.yml

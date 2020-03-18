@@ -1,0 +1,18 @@
+version: v1.0
+name: Pipeline 6
+blocks:
+  - name: Deploy to github
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - ls public
+            - ssh-keyscan -H -p 22 github.com >> ~/.ssh/known_hosts
+            - 'git remote add production "git@github.com:mattdanielmurphy/semaphore-demo-static-website.git" || true'
+            - git add docs
+            - git commit -m 'add docs folder (static build)'
+            - git push --force production master
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
