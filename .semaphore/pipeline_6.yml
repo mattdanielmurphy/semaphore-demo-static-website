@@ -6,7 +6,7 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - ls docs
+            - ls
             - ssh-keyscan -H -p 22 github.com >> ~/.ssh/known_hosts
             - 'git remote add production "git@github.com:mattdanielmurphy/semaphore-demo-static-website.git" || true'
             - git add docs
